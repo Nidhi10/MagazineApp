@@ -1,0 +1,7 @@
+<% if @comment.commentable_type == 'Article' %>
+    $('#comments').prepend("<%= j(render @comment) %>");
+    $('textarea[name="comment[content]"]').val('');
+<% else %>
+    $('#comment_<%=@comment.commentable_id %>').prepend("<%= j(render @comment) %>");
+    $('#comment_<%=@comment.commentable_id %>').find('form').remove();
+<% end %>

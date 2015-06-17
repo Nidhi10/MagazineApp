@@ -1,0 +1,22 @@
+<div class = "container" >
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th>Title</th>
+      <th></th>
+      <th>Author</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <% @articles.each do |article| %>
+      <tr>
+        <td><%= link_to article.title,  magazine_article_path(@magazine.id, article.id) %></td>
+        <td></td>
+        <td><%= article.author %></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+  <%= will_paginate @articles %>
+</div>

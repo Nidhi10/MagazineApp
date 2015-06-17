@@ -1,0 +1,19 @@
+<div class = "container" >
+  <div class="row">
+
+    <div class="col-sm-8 blog-main">
+
+      <div class="blog-post">
+        <h3 class="blog-post-title" ><%= @article.title %></h3>
+        <h4 class="blog-post-meta" ><%= @article.created_at.strftime("%d %b, %Y") %> by <%= @article.author %></h4>
+        <p class="blog-description"></p><%= @article.body %></p>
+       </div>
+      <div>
+        <p><%= render partial: 'comments/form', locals: {commentable: @article} %></p>
+      </div>
+      <div id="comments">
+        <%= link_to "#{@article.comments.size} comments", article_comments_path(@article), remote: true %>
+      </div>
+  </div>
+</div>
+</div>

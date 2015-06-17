@@ -1,0 +1,18 @@
+<div class = "container" >
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th>Name</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <% @magazines.each do |mag| %>
+      <tr>
+        <td><%= link_to mag.name, magazine_articles_path(mag) %></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+  <%= will_paginate @magazines %>
+</div>

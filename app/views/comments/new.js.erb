@@ -1,0 +1,1 @@
+$('#comment_<%= @commentable.id %>').html("<%= j(render partial: 'form', locals: {commentable: @commentable} ) %>");

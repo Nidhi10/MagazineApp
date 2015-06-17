@@ -1,0 +1,24 @@
+<% cache(comment.cache_key + 'content') do %>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <span class="panel-title"><%= comment.user_name %></span>
+      <span class="pull-right"><%= comment.created_at.strftime("%b %d,%Y") %> at <%= comment.created_at.strftime("%H.%M %p") %> </span>
+    </div>
+    <div class="panel-body">
+      <%= comment.content %>
+    </div>
+<% end %>
+    <% if (comment.comments.size == 0 && comment.user_id == current_user.id) %>
+      <%= link_to "Delete", comment_path(comment), method: :delete, data: {confirm: "You sure?"}, class: "pull-right", style: "padding-left:30px;" %>
+    <% end %>
+<% cache(comment.cache_key + 'reply_and_sub_comments') do %>
+    <%= link_to "Reply", new_comment_comment_path(comment), remote: true, class: "pull-right" %>
+  </div>
+  <div class="sub-comments">
+    <div id="comment_<%= comment.id %>"></div>
+    <% if comment.comments.size > 0 %>
+      <%= render comment.comments %>
+    <% end %>
+  </div>
+<% end %>
+
