@@ -8,7 +8,7 @@
       <%= comment.content %>
     </div>
 <% end %>
-    <% if (comment.comments.size == 0 && comment.user_id == current_user.id) %>
+    <% if (comment.comments.size == 0 && user_signed_in? && comment.user_id == current_user.id) %>
       <%= link_to "Delete", comment_path(comment), method: :delete, data: {confirm: "You sure?"}, class: "pull-right", style: "padding-left:30px;" %>
     <% end %>
 <% cache(comment.cache_key + 'reply_and_sub_comments') do %>
