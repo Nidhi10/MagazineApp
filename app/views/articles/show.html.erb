@@ -12,7 +12,7 @@
         <p><%= render partial: 'comments/form', locals: {commentable: @article} %></p>
       </div>
       <div id="comments">
-        <%= link_to "#{@article.comments.size} comments", article_comments_path(@article), remote: true %>
+        <%= link_to "#{@article.comments.size - 1} comments", article_comments_path(@article), remote: true %>
       </div>
   </div>
 </div>
